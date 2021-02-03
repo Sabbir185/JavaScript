@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bored API Play Game</title>
+</head>
+<body>
+    
+    <div style="text-align: center;font-size: 30px; margin-top: 60px;">
+        <h3 id="activity"></h3>
+        <h5>Cost maybe : <span id="price"></span></h5>
+    </div>
+
+
+    <script>
+        function doSomething(){
+            fetch('http://www.boredapi.com/api/activity/')
+            .then( res => res.json() )
+            .then( data => {
+                document.getElementById('activity').innerText = data.activity;
+                document.getElementById('price').innerText = data.price;
+                console.log(data);
+            })
+        }
+        doSomething();
+
+        setInterval(() => {
+            doSomething();
+        }, 3000); // ms
+
+    </script>
+</body>
+</html>
