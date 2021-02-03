@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WHO AM I</title>
+</head>
+<body>
+    <div style="text-align: center;font-size: 30px; margin-top: 60px;">
+        <h1>WHO AM I ?</h1>
+        <h4>My name is : <span id="name"></span></h4>
+        <h4>Gender : <span id="gender-id"></span></h4>
+        <p><em>if you're not happy , press F5</em></p>
+    </div>
+
+    <script>
+        function nameGenerator(){
+            fetch('https://randomuser.me/api/')
+            .then(res => res.json() )
+            .then( data => {
+                // console.log(data.results[0].gender);
+                // console.log(data.results[0].name);
+                const name = data.results[0].name;
+                document.getElementById('name').innerText = `${name.title} ${name.first} ${name.last}`;
+                document.getElementById('gender-id').innerText = data.results[0].gender
+
+            })
+        }
+
+        nameGenerator();
+
+        // setInterval(() => {
+        //     nameGenerator();
+        // }, 3000);
+
+    </script>
+</body>
+</html>
