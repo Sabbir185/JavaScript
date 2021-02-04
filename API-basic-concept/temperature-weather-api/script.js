@@ -9,7 +9,7 @@ document.getElementById('button-id').addEventListener("click", function(){
 
 // API fetching & posting
 function getWeatherInfo(city) {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=a18376cb63703f63e5656f5db15124cd`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=a18376cb63703f63e5656f5db15124cd`)
     .then(res => res.json())
     .then(data => display(data) )  // calling function to display info
     .catch(err => alert(err) )
