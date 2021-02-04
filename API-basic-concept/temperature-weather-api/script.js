@@ -7,6 +7,7 @@ document.getElementById('button-id').addEventListener("click", function(){
 })
 
 
+// API fetching & posting
 function getWeatherInfo(city) {
     fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city}&APPID=a18376cb63703f63e5656f5db15124cd`)
     .then(res => res.json())
@@ -14,12 +15,17 @@ function getWeatherInfo(city) {
     .catch(err => alert(err) )
 }
 
+
 function display(data){
     const temp = data.main.temp - 273.15 ;
     // console.log(typeof(temp));
     document.getElementById('temp').innerText = temp.toFixed(2) ;
     document.getElementById('description').innerText = data.weather[0].description ;
-    document.getElementById('temp').innerText = temp.toFixed(2) ;
+    let imageSrc = document.querySelector('img').src;
+    // console.log(imageSrc);
+    const icon = data.weather[0].icon ;
+    const newImgSrc = "https://openweathermap.org/img/wn/"+icon+"@2x.png" ;
+    document.querySelector('img').src = newImgSrc ;
 }
 
 
