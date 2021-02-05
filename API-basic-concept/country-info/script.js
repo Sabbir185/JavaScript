@@ -6,20 +6,17 @@ function getCountries(){
 }
 
 const showCountries = data => {
-    const div = document.getElementById('country');
-    for (let i = 0; i < data.length; i++) {
-        const country = data[i];
-        const countryDiv = document.createElement('div');
-        const h3 = document.createElement('h3');
-        h3.innerText = country.name;
-        const p = document.createElement('p');
-        
-        p.innerText = country.capital;
-        countryDiv.appendChild(h3);
-        countryDiv.appendChild(p);
+    const mainDiv = document.getElementById('country');
 
-        div.appendChild(countryDiv);
-    }
+    data.forEach( country => {
+        const countryDiv = document.createElement('div');
+        const countryInfo = `
+            <h3>${ country.name }</h3>
+            <p>${ country.capital }</p>
+        `;
+        countryDiv.innerHTML = countryInfo;
+        mainDiv.appendChild(countryDiv);
+    });
 }
 
 getCountries();
