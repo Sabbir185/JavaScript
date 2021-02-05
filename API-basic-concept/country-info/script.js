@@ -10,9 +10,10 @@ const showCountries = data => {
 
     data.forEach( country => {
         const countryDiv = document.createElement('div');
+        countryDiv.className = "country-info";
         const countryInfo = `
-            <h3>${ country.name }</h3>
-            <p>${ country.capital }</p>
+            <h3 class="countryName">${ country.name }</h3>
+            <p class="countryCapital">${ country.capital }</p>
         `;
         countryDiv.innerHTML = countryInfo;
         mainDiv.appendChild(countryDiv);
