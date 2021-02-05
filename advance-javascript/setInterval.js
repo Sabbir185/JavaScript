@@ -18,3 +18,4 @@ console.log("3rd execute");
 
 // NB. it is not grantee that exact 2 or 3 second after execute setTimeOut and setInterval
 // but it is grantee that program never execute before 2 or 3 seconds 
+// setInterval, setTimeOut work asynchonous way
