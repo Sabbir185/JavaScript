@@ -8,6 +8,7 @@
     text-align: center;
     font-size: 30px;
     color: goldenrod;
+    
 }
 .countryCapital{
     text-align: center;
@@ -16,6 +17,23 @@
     border: 1px solid tomato;
     border-radius: 20px;
     width: 300px;
-    height: 150px;
+    height: 200px;
     margin: auto;
+}
+.info-button{
+    margin: auto;
+    display: block;
+}
+
+#countryMoreInfo{
+    background-color: grey;
+    color: white;
+    text-align: center;
+    position: absolute;
+    width: 500px;
+    left: 35%;
+    top: 20%;
+}
+#countryMoreInfo img{
+    width: 250px;
 }
