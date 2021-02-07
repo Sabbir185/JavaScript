@@ -36,20 +36,33 @@ function getDetails(mealIngredient){
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealIngredient}`)
     .then(res => res.json())
     .then(data => showIngredient(data.meals[0]))
-    .catch(err => alert(err))
+    // .catch(err => alert(err))
 
 }
 
-function showIngredient(ingredients){
 
+function showIngredient(ingredients){
+    const ingredientSection = document.getElementById('show-Ingredient');
     for (let i = 1; i <= 20; i++) {  
         let ingredient = ingredients['strIngredient'+i.toString()];
-        // console.log(ingredients['strIngredient'+i.toString()] );
-        console.log( ingredient );
         if(ingredient=='')
         {
             break;
-        }      
+        }  
+        const cookInfo = `
+            <div>
+                <img src="${ingredients.strMealThumb}" >
+                <h1 id="meal-name"></h1>
+                <h5>Ingredients : </h5>
+                <ul id="list-inge">
+                    <li>${ingredient}</li>
+                </ul>
+            </div>
+        `;
+        ingredientSection.innerHTML = cookInfo;
+
+        // console.log( ingredient );
     }
+   
 }
 
