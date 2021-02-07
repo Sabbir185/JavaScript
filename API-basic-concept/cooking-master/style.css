@@ -25,6 +25,7 @@ body{
 .img-title img{
     width: 270px;
     border-radius: 10px 10px 0 0;
+    box-shadow: 2px 0px 5px gray;
 }
 .img-title{
     text-align: center;
@@ -44,4 +45,16 @@ body{
     width: 270px;
     border-radius: 0 0 10px 10px;
     font-size: 20px;
+    box-shadow: 2px 1px 5px gray;
+}
+
+#meal-image{
+    width: 400px;
+    border-radius: 10px;
+}
+#meal-name{
+    margin-top: 20px;
+}
+#list-ingredient{
+    font-size: 18px;
 }

@@ -18,17 +18,21 @@ function fetchMealAPI(foodName){
 
 function showMeal(data){
     const mealsSection = document.getElementById('show-meals');
-    data.forEach(mealsInfo => {
-        const div = document.createElement('div');
-        div.className = 'img-title' ;
-        const mealInfo = `
-            <a href="#show-Ingredient"><img onclick="getDetails('${mealsInfo.strMeal}')" src=${mealsInfo.strMealThumb}> </a>
-            <p class="title">${mealsInfo.strMeal}</p>
-        `;
-
-        div.innerHTML = mealInfo;
-        mealsSection.appendChild(div);
-    });
+    if(data === null){
+        alert("OOPs, sorry ! Now this item is not available")
+    }else{
+        data.forEach(mealsInfo => {
+            const div = document.createElement('div');
+            div.className = 'img-title' ;
+            const mealInfo = `
+                <a href="#show-Ingredient"><img onclick="getDetails('${mealsInfo.strMeal}')" src=${mealsInfo.strMealThumb}> </a>
+                <p class="title">${mealsInfo.strMeal}</p>
+            `;
+            div.innerHTML = mealInfo;
+            mealsSection.appendChild(div);
+            console.log(mealsInfo);
+        });
+    }
 }
 
 
@@ -36,7 +40,7 @@ function getDetails(mealIngredient){
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealIngredient}`)
     .then(res => res.json())
     .then(data => showIngredient(data.meals[0]))
-    // .catch(err => alert(err))
+    .catch(err => alert(err))
 
 }
 
@@ -45,10 +49,10 @@ function showIngredient(ingredients){
     const ingredientSection = document.getElementById('show-Ingredient');
     const cookInfo = `
             <div>
-                <img src="${ingredients.strMealThumb}" >
+                <img id="meal-image" src="${ingredients.strMealThumb}" >
                 <h1 id="meal-name">${ingredients.strMeal}</h1>
-                <h5>Ingredients : </h5>
-                <ul id="list-inge">
+                <h5 style="font-size: 23px">Ingredients : </h5>
+                <ul id="list-ingredient">
                 
                 </ul>
             </div>
@@ -61,8 +65,7 @@ function showIngredient(ingredients){
         {
             break;
         }  
-        // console.log( ingredient );
-        const ul = document.getElementById('list-inge');
+        const ul = document.getElementById('list-ingredient');
         const li = document.createElement('li');
         li.innerText = ingredient;
         ul.appendChild(li);
