@@ -1,10 +1,9 @@
 document.querySelector('#search-button').addEventListener("click",function(){
     const foodName = document.getElementById('food-input').value;
-    // console.log(typeof(foodName));
     if(foodName!=''){
         fetchMealAPI(foodName);
     }else{
-        console.log("Empty");
+        alert("Wrong Input ! Please check our meal items")
     }
 })
 
@@ -13,6 +12,7 @@ function fetchMealAPI(foodName){
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
     .then(res => res.json())
     .then(data => showMeal(data.meals))
+    .catch(err => alert(err))
 }
 
 
@@ -22,7 +22,7 @@ function showMeal(data){
         const div = document.createElement('div');
         div.className = 'img-title' ;
         const mealInfo = `
-            <img src=${mealsInfo.strMealThumb}>
+            <a href="#"><img onclick="getDetails('${mealsInfo.strMeal}')" src=${mealsInfo.strMealThumb}> </a>
             <p class="title">${mealsInfo.strMeal}</p>
         `;
 
@@ -32,11 +32,24 @@ function showMeal(data){
 }
 
 
+function getDetails(mealIngredient){
+    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealIngredient}`)
+    .then(res => res.json())
+    .then(data => showIngredient(data.meals[0]))
+    .catch(err => alert(err))
 
-// console.log(mealsInfo.strMeal);
-// console.log(mealsInfo.strMealThumb);
+}
 
-// console.log(data);
-// console.log(data.meals);
-// console.log(data.meals[0].strMeal);
-// console.log(data.meals[0].strMealThumb);
+function showIngredient(ingredients){
+
+    for (let i = 1; i <= 20; i++) {  
+        let ingredient = ingredients['strIngredient'+i.toString()];
+        // console.log(ingredients['strIngredient'+i.toString()] );
+        console.log( ingredient );
+        if(ingredient=='')
+        {
+            break;
+        }      
+    }
+}
+
