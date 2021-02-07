@@ -1,3 +1,4 @@
+// search button capture and take input
 document.querySelector('#search-button').addEventListener("click",function(){
     const foodName = document.getElementById('food-input').value;
     if(foodName!=''){
@@ -8,6 +9,7 @@ document.querySelector('#search-button').addEventListener("click",function(){
 })
 
 
+// api calling for searched name
 function fetchMealAPI(foodName){
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
     .then(res => res.json())
@@ -16,6 +18,7 @@ function fetchMealAPI(foodName){
 }
 
 
+// calling function for displaying items
 function showMeal(data){
     const mealsSection = document.getElementById('show-meals');
     if(data === null){
@@ -36,6 +39,7 @@ function showMeal(data){
 }
 
 
+// calling api for fetching ingredients
 function getDetails(mealIngredient){
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealIngredient}`)
     .then(res => res.json())
@@ -45,16 +49,19 @@ function getDetails(mealIngredient){
 }
 
 
+// display ingredients, title, image
 function showIngredient(ingredients){
     const ingredientSection = document.getElementById('show-Ingredient');
     const cookInfo = `
-            <div>
+            <div id="sub-container">
                 <img id="meal-image" src="${ingredients.strMealThumb}" >
-                <h1 id="meal-name">${ingredients.strMeal}</h1>
-                <h5 style="font-size: 23px">Ingredients : </h5>
-                <ul id="list-ingredient">
-                
-                </ul>
+                <div id="inner-container">
+                    <h1 id="meal-name">${ingredients.strMeal}</h1>
+                    <h5 style="font-size: 23px">Ingredients : </h5>
+                    <ul id="list-ingredient">
+                    
+                    </ul>
+                </div>
             </div>
         `;
     ingredientSection.innerHTML = cookInfo;
