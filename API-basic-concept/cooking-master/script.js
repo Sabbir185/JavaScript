@@ -10,7 +10,7 @@ document.querySelector('#search-button').addEventListener("click",function(){
 
 
 // api calling for searched name
-function fetchMealAPI(foodName){
+const fetchMealAPI = (foodName) => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${foodName}`)
     .then(res => res.json())
     .then(data => showMeal(data.meals))
@@ -19,7 +19,7 @@ function fetchMealAPI(foodName){
 
 
 // calling function for displaying items
-function showMeal(data){
+const showMeal = (data) => {
     const mealsSection = document.getElementById('show-meals');
     if(data === null){
         alert("OOPs, sorry ! Now this item is not available")
@@ -40,7 +40,7 @@ function showMeal(data){
 
 
 // calling api for fetching ingredients
-function getDetails(mealIngredient){
+const getDetails = (mealIngredient) => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${mealIngredient}`)
     .then(res => res.json())
     .then(data => showIngredient(data.meals[0]))
@@ -50,7 +50,7 @@ function getDetails(mealIngredient){
 
 
 // display ingredients, title, image
-function showIngredient(ingredients){
+const showIngredient = (ingredients) => {
     const ingredientSection = document.getElementById('show-Ingredient');
     const cookInfo = `
             <div id="sub-container">
@@ -66,7 +66,8 @@ function showIngredient(ingredients){
         `;
     ingredientSection.innerHTML = cookInfo;
 
-    for (let i = 1; i <= 20; i++) {  
+    let i = 1;
+    while (i<=20){  
         let ingredient = ingredients['strIngredient'+i.toString()];
         if(ingredient=='')
         {
@@ -76,6 +77,7 @@ function showIngredient(ingredients){
         const li = document.createElement('li');
         li.innerText = ingredient;
         ul.appendChild(li);
+        i++ ;
     }
    
 }
