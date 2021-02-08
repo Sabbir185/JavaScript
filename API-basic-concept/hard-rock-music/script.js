@@ -23,14 +23,23 @@ const displaySongs = songs => {
             </audio>
         </div>
         <div class="col-md-3 text-md-right text-center">
-            <button onclick="getLyrics('${song.artist['name']}','${song.title}')" class="btn btn-success">Get Lyrics</button>
+            <button onclick="getLyricsData('${song.artist['name']}','${song.title}')" class="btn btn-success">Get Lyrics</button>
         </div>
         `;
         artistContainer.appendChild(songDiv);
-        console.log(song.title);
     });
 }
 
-const getLyrics = (artist, title) =>{
-    console.log(artist, title);
+
+const getLyricsData = (artist, title) =>{
+    const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => getLyrics(data.lyrics))
+}
+
+
+const getLyrics = (lyric) => {
+    document.getElementById('lyrics-rock').innerText = lyric;
+    
 }
