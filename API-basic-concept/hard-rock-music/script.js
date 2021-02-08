@@ -11,6 +11,8 @@ const searchSongs = () => {
 // display data
 const displaySongs = songs => {
     const artistContainer = document.getElementById('artist-container');
+    // to solve auto added searched keyword's songs , first empty the div then add :)
+    artistContainer.innerText = ''; 
     songs.forEach(song => {
         const songDiv = document.createElement('div');
         songDiv.className = "single-result row align-items-center my-3 p-3";
@@ -31,11 +33,12 @@ const displaySongs = songs => {
 }
 
 
-const getLyricsData = (artist, title) =>{
+// async await , alternative process of .then
+const getLyricsData = async(artist, title) =>{
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
-    fetch(url)
-    .then(res => res.json())
-    .then(data => getLyrics(data.lyrics))
+    const res = await fetch(url)
+    const data = await res.json();
+    getLyrics(data.lyrics);
 }
 
 
