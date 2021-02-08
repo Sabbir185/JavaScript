@@ -36,9 +36,14 @@ const displaySongs = songs => {
 // async await , alternative process of .then
 const getLyricsData = async(artist, title) =>{
     const url = `https://api.lyrics.ovh/v1/${artist}/${title}`;
-    const res = await fetch(url)
-    const data = await res.json();
-    getLyrics(data.lyrics);
+    try{
+        const res = await fetch(url)
+        const data = await res.json();
+        getLyrics(data.lyrics);
+    }
+    catch(err){
+        alert(err);
+    }
 }
 
 
