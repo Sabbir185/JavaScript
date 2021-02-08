@@ -68,8 +68,8 @@ const showIngredient = (ingredients) => {
 
     let i = 1;
     while (i<=20){  
-        let ingredient = ingredients['strIngredient'+i.toString()];
-        if(ingredient=='')
+        let ingredient = ingredients['strIngredient'+i.toString()];  // show all ingredient 
+        if(ingredient=='')                                  //  until empty string will find
         {
             break;
         }  
