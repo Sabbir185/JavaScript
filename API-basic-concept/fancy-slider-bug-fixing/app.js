@@ -26,8 +26,10 @@ const showImages = (images) => {
     gallery.appendChild(div)
     
   })
-  
+
   loadingStatus();
+  document.getElementById('count-img').innerText = '';
+
 
 }
 
@@ -51,7 +53,12 @@ const selectItem = (event, img) => {
   } else {
     sliders.splice(item, 1);
   }
+
+  // count selected images
+  document.getElementById('count-img').innerText = sliders.length;
 }
+
+
 
 var timer
 const createSlider = () => {
@@ -142,7 +149,9 @@ document.getElementById('search').addEventListener("keypress",function(event){
 })
 
 
+// toggle spinner of loading data
 const loadingStatus = () => {
   const loading = document.getElementById('loading');
   loading.classList.toggle('d-none');
 }
+
