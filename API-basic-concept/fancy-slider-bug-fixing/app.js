@@ -122,10 +122,10 @@ const changeSlide = (index) => {
   }
 
   items.forEach(item => {
-    item.style.display = "none"
+    item.style.display = "none";
   })
 
-  items[index].style.display = "block"
+  items[index].style.display = "block";
 }
 
 searchBtn.addEventListener('click', function () {
@@ -155,3 +155,4 @@ const loadingStatus = () => {
   loading.classList.toggle('d-none');
 }
 
+ 
