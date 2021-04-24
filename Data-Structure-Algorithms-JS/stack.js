@@ -1,3 +1,11 @@
+// Functions to be implemented
+// push(item)
+// pop() remove last 
+// peek() not removable but show last value
+// isEmpty() boolean answer
+// printStack() 
+// LIFO
+
 class EasyStack{
 
     constructor(){
