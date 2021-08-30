@@ -14,8 +14,11 @@ const prom = new Promise((resolve, reject) => {
 })
 
 // initial pending
-console.log(prom)
+// console.log(prom)
 
 prom
     .then(data => console.log(data)) // resolve
     .catch(err => console.log(err)); // reject
+
+
+console.log('Sync line !!!! print first')
